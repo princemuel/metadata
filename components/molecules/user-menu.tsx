@@ -1,5 +1,6 @@
 'use client';
 
+import { useRegisterModal } from '@/lib';
 import * as React from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { Avatar } from '../atoms';
@@ -9,6 +10,8 @@ interface Props {}
 
 function UserMenu({}: Props) {
   const [isOpen, setIsOpen] = React.useState(false);
+
+  const registerModal = useRegisterModal();
 
   const toggleOpen = React.useCallback(() => {
     setIsOpen((value) => !value);
@@ -41,7 +44,7 @@ function UserMenu({}: Props) {
           <div className='flex cursor-pointer flex-col'>
             <React.Fragment>
               <MenuItem label={'Login'} onClick={() => {}} />
-              <MenuItem label={'Register'} onClick={() => {}} />
+              <MenuItem label={'Register'} onClick={registerModal.onOpen} />
             </React.Fragment>
           </div>
         </div>

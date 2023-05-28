@@ -25,6 +25,7 @@ const Button = ({
         'relative w-full rounded-lg transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70',
         outline ? 'bg-white' : 'bg-rose-500',
         outline ? 'border-black' : 'border-rose-500',
+        outline ? 'text-black' : 'text-white',
         small ? 'py-1' : 'py-3',
         small ? 'text-sm' : 'text-base',
         small ? 'font-light' : 'font-semibold',
