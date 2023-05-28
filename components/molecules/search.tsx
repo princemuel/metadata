@@ -15,7 +15,7 @@ const Search = (props: Props) => {
         <p className='flex items-center gap-3 pl-6 pr-2 text-sm text-gray-600'>
           <span className='hidden sm:block'>Add Guests</span>
           <span className='rounded-full bg-rose-500 p-2 text-white'>
-            <BiSearch />
+            <BiSearch size={18} />
           </span>
         </p>
       </div>
