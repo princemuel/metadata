@@ -1,15 +1,13 @@
-'use client';
-
-'use  client';
-
 import Image from 'next/image';
 
-interface Props {}
+interface Props {
+  src?: string;
+}
 
-function Avatar({}: Props) {
+function Avatar({ src }: Props) {
   return (
     <Image
-      src={'/assets/placeholder.jpg'}
+      src={src || '/assets/placeholder.jpg'}
       className='rounded-full'
       height={30}
       width={30}
