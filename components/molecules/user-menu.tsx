@@ -30,11 +30,10 @@ function UserMenu({}: Props) {
           onClick={toggleOpen}
         >
           <AiOutlineMenu />
+          <div className='hidden md:block'>
+            <Avatar />
+          </div>
         </button>
-
-        <div className='hidden md:block'>
-          <Avatar />
-        </div>
       </div>
 
       {isOpen && (
