@@ -19,7 +19,7 @@ const RegisterForm = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<RegisterFormData>({
+  } = useForm<AuthFormData>({
     defaultValues: { name: '', email: '', password: '' },
   });
 
@@ -28,12 +28,12 @@ const RegisterForm = () => {
     loginModal.onOpen();
   }, [registerModal, loginModal]);
 
-  const onSubmit: SubmitHandler<RegisterFormData> = (data) => {
+  const onSubmit: SubmitHandler<AuthFormData> = (data) => {
     setIsLoading(true);
 
     ABClient.post('/register', data)
       .then(() => {
-        toast.success('Registered!');
+        toast.success('User Registeration Successfull!');
         registerModal.onClose();
         loginModal.onOpen();
       })
