@@ -1,5 +1,3 @@
-'use client';
-
 import { cx } from 'cva';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { BiDollar } from 'react-icons/bi';
@@ -11,7 +9,7 @@ interface InputProps {
   disabled?: boolean;
   formatPrice?: boolean;
   required?: boolean;
-  register: UseFormRegister<RegisterFormData>;
+  register: UseFormRegister<AuthFormData>;
   errors: FieldErrors;
 }
 
@@ -36,7 +34,7 @@ const Input = ({
       <input
         id={id}
         disabled={disabled}
-        {...register(id as keyof RegisterFormData, { required })}
+        {...register(id as keyof AuthFormData, { required })}
         placeholder=' '
         type={type}
         className={cx(

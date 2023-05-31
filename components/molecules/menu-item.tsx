@@ -1,11 +1,6 @@
-'use client';
-
-// import * as React from 'react';
-// import { AiOutlineMenu } from 'react-icons/ai';
-// import { Avatar } from '../atoms';
-
+type Suffix = 'trips' | 'favorites' | 'reservations' | 'properties';
 interface Props {
-  label: 'Login' | 'Register';
+  label: 'Register' | 'Login' | 'Logout' | 'Airbnb your home' | `My ${Suffix}`;
   onClick: () => void;
 }
 
