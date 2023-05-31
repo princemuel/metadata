@@ -1,21 +1,35 @@
 'use client';
 
-import { useRegisterModal } from '@/lib';
+import { useLoginModal, useRegisterModal, useRentModal } from '@/lib';
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { Avatar } from '../atoms';
 import { MenuItem } from './menu-item';
 
-interface Props {}
+interface Props {
+  currentUser: SafeUser | null;
+}
 
-function UserMenu({}: Props) {
+function UserMenu({ currentUser }: Props) {
+  const router = useRouter();
+
   const [isOpen, setIsOpen] = React.useState(false);
 
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
+  const rentModal = useRentModal();
 
   const toggleOpen = React.useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+
+  const handleRentModal = React.useCallback(() => {
+    if (!currentUser) return loginModal.onOpen();
+
+    rentModal.onOpen();
+  }, [currentUser, loginModal, rentModal]);
 
   return (
     <div className='relative '>
@@ -23,6 +37,7 @@ function UserMenu({}: Props) {
         <button
           type='button'
           className='hidden rounded-full px-4 py-3 text-sm font-semibold transition hover:bg-neutral-100 md:block'
+          onClick={handleRentModal}
         >
           Airbnb your home
         </button>
@@ -34,7 +49,7 @@ function UserMenu({}: Props) {
         >
           <AiOutlineMenu />
           <div className='hidden md:block'>
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </button>
       </div>
@@ -42,10 +57,34 @@ function UserMenu({}: Props) {
       {isOpen && (
         <div className='absolute right-0 top-12 w-[40vw] overflow-hidden rounded-xl bg-white text-sm shadow-md md:w-3/4'>
           <div className='flex cursor-pointer flex-col'>
-            <React.Fragment>
-              <MenuItem label={'Login'} onClick={() => {}} />
-              <MenuItem label={'Register'} onClick={registerModal.onOpen} />
-            </React.Fragment>
+            {currentUser ? (
+              <React.Fragment>
+                <MenuItem
+                  label='My trips'
+                  onClick={() => router.push('/trips')}
+                />
+                <MenuItem
+                  label='My favorites'
+                  onClick={() => router.push('/favorites')}
+                />
+                <MenuItem
+                  label='My reservations'
+                  onClick={() => router.push('/reservations')}
+                />
+                <MenuItem
+                  label='My properties'
+                  onClick={() => router.push('/properties')}
+                />
+                <MenuItem label='Airbnb your home' onClick={rentModal.onOpen} />
+                <hr />
+                <MenuItem label='Logout' onClick={() => signOut()} />
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <MenuItem label='Login' onClick={loginModal.onOpen} />
+                <MenuItem label='Register' onClick={registerModal.onOpen} />
+              </React.Fragment>
+            )}
           </div>
         </div>
       )}
