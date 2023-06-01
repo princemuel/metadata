@@ -1,10 +1,7 @@
 import Leaflet from "leaflet";
 import dynamic from "next/dynamic";
+import { useMemo } from "react";
 import * as ReactLeaflet from "react-leaflet";
-
-const DynamicMap = dynamic(() => import("../atoms/base-map"), {
-  ssr: false,
-});
 
 // Set default sizing to control aspect ratio which will scale responsively
 // but also help avoid layout shifts
@@ -16,14 +13,28 @@ interface Props extends ReactLeaflet.MapContainerProps {
   width: string | number;
   height: string | number;
   children: (f1: typeof ReactLeaflet, f2: typeof Leaflet) => React.ReactNode;
+  location: ICountry;
 }
 
 const Map = (props: Props) => {
-  const { width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT } = props;
+  const {
+    location,
+    width = DEFAULT_WIDTH,
+    height = DEFAULT_HEIGHT,
+    ...rest
+  } = props;
+
+  const DynamicMap = useMemo(() => {
+    return dynamic(() => import("../atoms/base-map"), {
+      ssr: false,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
   return (
-    <div style={{ aspectRatio: Number(width) / Number(height) }}>
-      <DynamicMap {...props} />
-    </div>
+    <section style={{ aspectRatio: Number(width) / Number(height) }}>
+      <DynamicMap {...rest} />
+    </section>
   );
 };
 
