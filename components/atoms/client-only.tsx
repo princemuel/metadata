@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import * as React from 'react';
+import * as React from "react";
 
 interface Props {
   children: React.ReactNode;
 }
 
-const ClientOnly = ({ children }: Props) => {
+export const ClientOnly = ({ children }: Props) => {
   const [hasMounted, setHasMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -20,5 +20,3 @@ const ClientOnly = ({ children }: Props) => {
 
   return <React.Fragment>{children}</React.Fragment>;
 };
-
-export { ClientOnly };
