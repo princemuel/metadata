@@ -1,5 +1,6 @@
 import { Container, Logo } from '../atoms';
 import { Search, UserMenu } from '../molecules';
+import { Categories } from './categories';
 
 interface Props {
   currentUser: SafeUser | null;
@@ -17,6 +18,8 @@ export function Navbar({ currentUser }: Props) {
           </div>
         </Container>
       </div>
+
+      <Categories />
     </div>
   );
 }
