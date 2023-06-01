@@ -10,8 +10,6 @@ const { MapContainer } = ReactLeaflet;
 
 // @ts-expect-error
 interface Props extends ReactLeaflet.MapContainerProps {
-  width: string | number;
-  height: string | number;
   children: (f1: typeof ReactLeaflet, f2: typeof Leaflet) => React.ReactNode;
 }
 
