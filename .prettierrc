@@ -1,0 +1,6 @@
+{
+  "tailwindConfig": "./tailwind.config.js",
+  "tailwindFunctions": ["cx"],
+  "plugins": ["prettier-plugin-prisma", "prettier-plugin-tailwindcss"],
+  "pluginSearchDirs": false
+}
