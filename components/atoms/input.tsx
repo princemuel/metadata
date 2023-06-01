@@ -9,7 +9,7 @@ interface InputProps {
   disabled?: boolean;
   formatPrice?: boolean;
   required?: boolean;
-  register: UseFormRegister<AuthFormData>;
+  register: UseFormRegister<Record<string, any>>;
   errors: FieldErrors;
 }
 

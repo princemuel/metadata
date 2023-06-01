@@ -11,7 +11,7 @@ interface Props {
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
-  actionLabel: string;
+  actionLabel?: string;
   secondaryActionLabel?: string;
   secondaryAction?: () => void;
   onClose: () => void;

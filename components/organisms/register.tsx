@@ -93,7 +93,7 @@ const RegisterForm = () => {
       />
       <div className='mt-4 text-center font-light text-neutral-500'>
         <p>
-          <span>Already have an account?</span>{' '}
+          <span>Already have an account? </span>
           <span
             onClick={handleToggle}
             className='cursor-pointer text-neutral-800 hover:underline'

@@ -1,17 +1,22 @@
-import { ClientOnly, Navbar, RegisterForm } from '@/components';
-import { LoginForm } from '@/components/organisms/login';
-import { ToastProvider } from '@/lib';
-import { Metadata } from 'next';
-import { Nunito } from 'next/font/google';
-import * as React from 'react';
-import getCurrentUser from './actions/get-current-user';
-import './globals.css';
+import {
+  ClientOnly,
+  LoginForm,
+  Navbar,
+  RegisterForm,
+  RentalForm,
+} from "@/components";
+import { ToastProvider } from "@/lib";
+import { Metadata } from "next";
+import { Nunito } from "next/font/google";
+import * as React from "react";
+import getCurrentUser from "./actions/get-current-user";
+import "./globals.css";
 
-const font = Nunito({ subsets: ['latin'] });
+const font = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Airbnb',
-  description: 'Airbnb Clone',
+  title: "Airbnb",
+  description: "Airbnb Clone",
 };
 
 export default async function RootLayout({
@@ -21,16 +26,19 @@ export default async function RootLayout({
 }) {
   const user = await getCurrentUser();
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={font.className}>
         <React.Fragment>
           <ClientOnly>
             <ToastProvider />
             <LoginForm />
             <RegisterForm />
+            <RentalForm />
           </ClientOnly>
+
           <Navbar currentUser={user} />
-          {children}
+
+          <React.Fragment>{children}</React.Fragment>
         </React.Fragment>
       </body>
     </html>

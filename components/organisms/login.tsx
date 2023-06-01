@@ -92,12 +92,9 @@ const LoginForm = () => {
         icon={AiFillGithub}
         onClick={() => signIn('github')}
       />
-      <div
-        className='
-      text-neutral-500 text-center mt-4 font-light'
-      >
+      <div className='text-neutral-500 text-center mt-4 font-light'>
         <p>
-          <span>First time using Airbnb?</span>
+          <span>First time using Airbnb? </span>
           <span
             onClick={onToggle}
             className='
@@ -106,7 +103,6 @@ const LoginForm = () => {
               hover:underline
             '
           >
-            {' '}
             Create an account
           </span>
         </p>

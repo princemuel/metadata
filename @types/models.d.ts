@@ -1,4 +1,8 @@
-type AuthFormData = Pick<DeepRequired<IUser>, 'name' | 'email' | 'password'>;
+type AuthFormData = Pick<DeepRequired<IUser>, "name" | "email" | "password">;
+
+interface RentFormData extends Omit<IListing, "id" | "createdAt" | "userId"> {
+  // location: string | null;
+}
 
 interface SafeUser extends IUser {
   createdAt: string;
@@ -19,8 +23,8 @@ interface IUser {
 
 interface SafeReservation extends IReservation {
   createdAt: string;
-  startDate: string;
   endDate: string;
+  startDate: string;
   listing: SafeListing;
 }
 interface IReservation {
@@ -28,8 +32,8 @@ interface IReservation {
   createdAt: Date;
   startDate: Date;
   endDate: Date;
-  total: number;
   listingId: string;
+  total: number;
   userId: string;
 }
 
@@ -39,14 +43,22 @@ interface SafeListing extends IListing {
 interface IListing {
   id: string;
   createdAt: Date;
-  title: string;
-  description: string;
-  image: string;
-  price: number;
-  category: string;
-  rooms: number;
   bathrooms: number;
+  category: string;
+  description: string;
   guests: number;
-  location: string;
+  image: string;
+  location: ICountry;
+  price: number;
+  rooms: number;
+  title: string;
   userId: string;
+}
+
+interface ICountry {
+  code: string;
+  name: string;
+  flag: string;
+  latlng: [number, number];
+  region: string;
 }
