@@ -48,7 +48,7 @@ interface IListing {
   description: string;
   guests: number;
   image: string;
-  location: ICountry;
+  location: string;
   price: number;
   rooms: number;
   title: string;
