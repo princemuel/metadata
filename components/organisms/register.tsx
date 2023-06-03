@@ -1,6 +1,6 @@
 'use client';
 
-import { ABClient, useLoginModal, useRegisterModal } from '@/lib';
+import { client, useLoginModal, useRegisterModal } from '@/lib';
 import { signIn } from 'next-auth/react';
 import { useCallback, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -31,7 +31,7 @@ const RegisterForm = () => {
   const onSubmit: SubmitHandler<AuthFormData> = (data) => {
     setIsLoading(true);
 
-    ABClient.post('/register', data)
+    client.post('/register', data)
       .then(() => {
         toast.success('User Registeration Successfull!');
         registerModal.onClose();
