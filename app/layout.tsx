@@ -1,11 +1,5 @@
-import {
-  ClientOnly,
-  LoginForm,
-  Navbar,
-  RegisterForm,
-  RentalForm,
-} from "@/components";
-import { ToastProvider } from "@/lib";
+import { ClientOnly, Navbar } from "@/components";
+import { Providers } from "@/lib/providers";
 import { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import * as React from "react";
@@ -30,10 +24,7 @@ export default async function RootLayout({
       <body className={font.className}>
         <React.Fragment>
           <ClientOnly>
-            <ToastProvider />
-            <LoginForm />
-            <RegisterForm />
-            <RentalForm />
+            <Providers />
           </ClientOnly>
 
           <Navbar currentUser={user} />
