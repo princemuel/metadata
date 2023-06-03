@@ -1,13 +1,14 @@
-import { db } from '../api/auth/[...nextauth]/route';
+import { getErrorMessage } from "@/lib";
+import { db } from "../api/auth/[...nextauth]/route";
 
 export interface IListingsParams {
   userId?: string;
-  guestCount?: number;
-  roomCount?: number;
-  bathroomCount?: number;
+  guests?: number;
+  rooms?: number;
+  bathrooms?: number;
   startDate?: string;
   endDate?: string;
-  locationValue?: string;
+  location?: string;
   category?: string;
 }
 
@@ -15,10 +16,10 @@ export default async function getListings(params: IListingsParams) {
   try {
     const {
       userId,
-      roomCount,
-      guestCount,
-      bathroomCount,
-      locationValue,
+      rooms,
+      guests,
+      bathrooms,
+      location,
       startDate,
       endDate,
       category,
@@ -34,26 +35,26 @@ export default async function getListings(params: IListingsParams) {
       query.category = category;
     }
 
-    if (roomCount) {
-      query.roomCount = {
-        gte: +roomCount,
+    if (rooms) {
+      query.rooms = {
+        gte: +rooms,
       };
     }
 
-    if (guestCount) {
-      query.guestCount = {
-        gte: +guestCount,
+    if (guests) {
+      query.guests = {
+        gte: +guests,
       };
     }
 
-    if (bathroomCount) {
-      query.bathroomCount = {
-        gte: +bathroomCount,
+    if (bathrooms) {
+      query.bathrooms = {
+        gte: +bathrooms,
       };
     }
 
-    if (locationValue) {
-      query.locationValue = locationValue;
+    if (location) {
+      query.location = location;
     }
 
     if (startDate && endDate) {
@@ -78,17 +79,15 @@ export default async function getListings(params: IListingsParams) {
     const listings = await db.listing.findMany({
       where: query,
       orderBy: {
-        createdAt: 'desc',
+        createdAt: "desc",
       },
     });
 
-    const safeListings = listings.map((listing) => ({
+    return listings.map((listing) => ({
       ...listing,
       createdAt: listing.createdAt.toISOString(),
     }));
-
-    return safeListings;
-  } catch (error: any) {
-    throw new Error(error);
+  } catch (error) {
+    throw new Error(getErrorMessage(error));
   }
 }
