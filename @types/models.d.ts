@@ -1,7 +1,11 @@
-type AuthFormData = Pick<DeepRequired<IUser>, "name" | "email" | "password">;
+type AuthFormData = Pick<DeepRequired<IUser>, 'name' | 'email' | 'password'>;
 
-interface RentFormData extends Omit<IListing, "id" | "createdAt" | "userId"> {
-  // location: string | null;
+interface RentFormData extends Omit<IListing, 'id' | 'createdAt' | 'userId'> {
+  location?: ICountry | null;
+}
+
+interface Params {
+  [key: string]: string | undefined;
 }
 
 interface SafeUser extends IUser {
@@ -56,6 +60,7 @@ interface IListing {
 }
 
 interface ICountry {
+  value: any;
   code: string;
   name: string;
   flag: string;
