@@ -1,7 +1,7 @@
-import getCurrentUser from "@/app/actions/get-current-user";
-import { objectKeys } from "@/lib";
-import { NextResponse } from "next/server";
-import { db } from "../auth/[...nextauth]/route";
+import { getCurrentUser } from '@/app/actions';
+import { objectKeys } from '@/lib';
+import { NextResponse } from 'next/server';
+import { db } from '../auth/[...nextauth]/route';
 
 export async function POST(request: Request) {
   const user = await getCurrentUser();
@@ -33,6 +33,7 @@ export async function POST(request: Request) {
       rooms,
       bathrooms,
       guests,
+      // @ts-expect-error // fix this type issue later
       location: location.code,
       price: Number.parseInt(price.toString(), 10),
       userId: user.id,
