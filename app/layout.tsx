@@ -26,10 +26,8 @@ export default async function RootLayout({
           <ClientOnly>
             <Providers />
           </ClientOnly>
-
           <Navbar currentUser={user} />
-
-          <React.Fragment>{children}</React.Fragment>
+          <main className="pb-20 pt-28">{children}</main>
         </React.Fragment>
       </body>
     </html>
