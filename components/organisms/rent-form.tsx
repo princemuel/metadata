@@ -1,12 +1,19 @@
 "use client";
 
-import { ABClient, useRentModal } from "@/lib";
+import { client, useRentModal } from "@/lib";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Heading } from "../atoms";
-import { CategoryInput, CountryMenu, Map, Modal } from "../molecules";
+import { Heading, Input } from "../atoms";
+import {
+  CategoryInput,
+  Counter,
+  CountryMenu,
+  ImageUploader,
+  Map,
+  Modal,
+} from "../molecules";
 import { categories } from "./categories";
 
 enum STEPS {
@@ -102,7 +109,8 @@ const RentalForm = () => {
     if (step !== STEPS.PRICE) return handleNext();
     setIsLoading(true);
 
-    ABClient.post("/listings", data)
+    client
+      .post("/listings", data)
       .then(() => {
         toast.success("Listing created!");
         router.refresh();
@@ -119,29 +127,29 @@ const RentalForm = () => {
   };
 
   let body = (
-    <div className="flex flex-col gap-8">
+    <article className="flex flex-col gap-8">
       <Heading
         title="Which of these best describes your place?"
         subtitle="Pick a category"
       />
-      <div className="grid max-h-[50vh] grid-cols-1 gap-3 overflow-y-auto md:grid-cols-2">
+      <ul className="grid max-h-[50vh] grid-cols-1 gap-3 overflow-y-auto md:grid-cols-2">
         {categories.map((item) => (
-          <div key={item.label} className="col-span-1">
+          <li key={item.label} className="col-span-1">
             <CategoryInput
               onClick={(category) => setCustomValue("category", category)}
               selected={category === item.label}
               label={item.label}
               icon={item.icon}
             />
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </article>
   );
 
   if (step === STEPS.LOCATION) {
     body = (
-      <div className="flex flex-col gap-8">
+      <article className="flex flex-col gap-8">
         <Heading
           title="Where is your place located?"
           subtitle="Help guests find you!"
@@ -172,104 +180,104 @@ const RentalForm = () => {
             </React.Fragment>
           )}
         </Map>
-      </div>
+      </article>
     );
   }
 
-  // if (step === STEPS.INFO) {
-  //   body = (
-  //     <div className="flex flex-col gap-8">
-  //       <Heading
-  //         title="Share some basics about your place"
-  //         subtitle="What amenities do you have?"
-  //       />
-  //       <Counter
-  //         onChange={(value) => setCustomValue("guests", value)}
-  //         value={guests}
-  //         title="Guests"
-  //         subtitle="How many guests would you allow?"
-  //       />
-  //       <hr />
-  //       <Counter
-  //         onChange={(value) => setCustomValue("rooms", value)}
-  //         value={rooms}
-  //         title="Rooms"
-  //         subtitle="How many rooms do you have?"
-  //       />
-  //       <hr />
-  //       <Counter
-  //         onChange={(value) => setCustomValue("bathrooms", value)}
-  //         value={bathrooms}
-  //         title="Bathrooms"
-  //         subtitle="How many bathrooms do you have?"
-  //       />
-  //     </div>
-  //   );
-  // }
+  if (step === STEPS.INFO) {
+    body = (
+      <article className="flex flex-col gap-8">
+        <Heading
+          title="Share some basics about your place"
+          subtitle="What amenities do you have?"
+        />
+        <Counter
+          title="Guests"
+          subtitle="How many guests would you allow?"
+          value={guests}
+          update={(value) => setCustomValue("guests", value)}
+        />
+        <hr />
+        <Counter
+          title="Rooms"
+          subtitle="How many rooms do you have?"
+          value={rooms}
+          update={(value) => setCustomValue("rooms", value)}
+        />
+        <hr />
+        <Counter
+          title="Bathrooms"
+          subtitle="How many bathrooms do you have?"
+          value={bathrooms}
+          update={(value) => setCustomValue("bathrooms", value)}
+        />
+      </article>
+    );
+  }
 
-  // if (step === STEPS.IMAGES) {
-  //   body = (
-  //     <div className="flex flex-col gap-8">
-  //       <Heading
-  //         title="Add a photo of your place"
-  //         subtitle="Show guests what your place looks like!"
-  //       />
-  //       <ImageUpload
-  //         onChange={(value) => setCustomValue("image", value)}
-  //         value={image}
-  //       />
-  //     </div>
-  //   );
-  // }
+  if (step === STEPS.IMAGES) {
+    body = (
+      <article className="flex flex-col gap-8">
+        <Heading
+          title="Add a photo of your place"
+          subtitle="Show guests what your place looks like!"
+        />
+        <ImageUploader
+          update={(value) => setCustomValue("image", value)}
+          value={image}
+        />
+      </article>
+    );
+  }
 
-  // if (step === STEPS.DESCRIPTION) {
-  //   body = (
-  //     <div className="flex flex-col gap-8">
-  //       <Heading
-  //         title="How would you describe your place?"
-  //         subtitle="Short and sweet works best!"
-  //       />
-  //       <Input
-  //         id="title"
-  //         label="Title"
-  //         disabled={isLoading}
-  //         register={register}
-  //         errors={errors}
-  //         required
-  //       />
-  //       <hr />
-  //       <Input
-  //         id="description"
-  //         label="Description"
-  //         disabled={isLoading}
-  //         register={register}
-  //         errors={errors}
-  //         required
-  //       />
-  //     </div>
-  //   );
-  // }
+  if (step === STEPS.DESCRIPTION) {
+    body = (
+      <article className="flex flex-col gap-8">
+        <Heading
+          title="How would you describe your place?"
+          subtitle="Short and sweet works best!"
+        />
+        <Input
+          id="title"
+          label="Title"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+        <hr />
+        <Input
+          id="description"
+          label="Description"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </article>
+    );
+  }
 
-  // if (step === STEPS.PRICE) {
-  //   body = (
-  //     <div className="flex flex-col gap-8">
-  //       <Heading
-  //         title="Now, set your price"
-  //         subtitle="How much do you charge per night?"
-  //       />
-  //       <Input
-  //         id="price"
-  //         label="Price"
-  //         formatPrice
-  //         type="number"
-  //         disabled={isLoading}
-  //         register={register}
-  //         errors={errors}
-  //         required
-  //       />
-  //     </div>
-  //   );
-  // }
+  if (step === STEPS.PRICE) {
+    body = (
+      <article className="flex flex-col gap-8">
+        <Heading
+          title="Now, set your price"
+          subtitle="How much do you charge per night?"
+        />
+        <Input
+          id="price"
+          label="Price"
+          formatPrice
+          type="number"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </article>
+    );
+  }
 
   return (
     <Modal
