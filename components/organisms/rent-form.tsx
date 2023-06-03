@@ -1,6 +1,6 @@
 "use client";
 
-import { client, useRentModal } from "@/lib";
+import { client, getErrorMessage, useRentModal } from "@/lib";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -118,8 +118,8 @@ const RentalForm = () => {
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
       })
-      .catch(() => {
-        toast.error("Something went wrong.");
+      .catch((e) => {
+        toast.error(getErrorMessage(e));
       })
       .finally(() => {
         setIsLoading(false);
