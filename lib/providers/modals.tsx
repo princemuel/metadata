@@ -1,5 +1,5 @@
-import { LoginForm, RegisterForm, RentalForm } from "@/components";
-import * as React from "react";
+import { LoginForm, RegisterForm, RentalForm, SearchForm } from '@/components';
+import * as React from 'react';
 
 interface Props {}
 
@@ -9,6 +9,7 @@ const ModalsProvider = (props: Props) => {
       <LoginForm />
       <RegisterForm />
       <RentalForm />
+      <SearchForm />
     </React.Fragment>
   );
 };
