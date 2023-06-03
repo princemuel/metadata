@@ -1,18 +1,7 @@
-import { getErrorMessage } from "@/lib";
-import { db } from "../api/auth/[...nextauth]/route";
+import { getErrorMessage } from '@/lib';
+import { db } from '../api/auth/[...nextauth]/route';
 
-export interface IListingsParams {
-  userId?: string;
-  guests?: number;
-  rooms?: number;
-  bathrooms?: number;
-  startDate?: string;
-  endDate?: string;
-  location?: string;
-  category?: string;
-}
-
-export default async function getListings(params: IListingsParams) {
+export async function getListings(params: Params) {
   try {
     const {
       userId,
@@ -25,7 +14,7 @@ export default async function getListings(params: IListingsParams) {
       category,
     } = params;
 
-    let query: any = {};
+    const query: Record<string, string | {}> = {};
 
     if (userId) {
       query.userId = userId;
@@ -79,7 +68,7 @@ export default async function getListings(params: IListingsParams) {
     const listings = await db.listing.findMany({
       where: query,
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
     });
 

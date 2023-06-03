@@ -1,26 +1,25 @@
+import { getErrorMessage } from '@/lib';
 import { db } from '../api/auth/[...nextauth]/route';
-import getCurrentUser from './get-current-user';
+import { getCurrentUser } from './get-current-user';
 
-export default async function getFavoriteListings() {
+export async function getFavoriteListings() {
   try {
-    const currentUser = await getCurrentUser();
-    if (!currentUser) return [];
+    const user = await getCurrentUser();
+    if (!user) return [];
 
     const favorites = await db.listing.findMany({
       where: {
         id: {
-          in: [...(currentUser.favoriteIds || [])],
+          in: [...(user.favoriteIds || [])],
         },
       },
     });
 
-    const safeFavorites = favorites.map((favorite) => ({
+    return favorites.map((favorite) => ({
       ...favorite,
       createdAt: favorite.createdAt.toString(),
     }));
-
-    return safeFavorites;
-  } catch (error: any) {
-    throw new Error(error);
+  } catch (error) {
+    throw new Error(getErrorMessage(error));
   }
 }

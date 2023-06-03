@@ -1,12 +1,9 @@
+import { getErrorMessage } from '@/lib';
 import { db } from '../api/auth/[...nextauth]/route';
 
-interface IParams {
-  listingId?: string;
-}
-
-export default async function getListingById(params: IParams) {
+export async function getListingById(params: Params) {
   try {
-    const listingId = params.listingId;
+    const { listingId } = params;
 
     const listing = await db.listing.findUnique({
       where: {
@@ -28,7 +25,7 @@ export default async function getListingById(params: IParams) {
         emailVerified: listing.user.emailVerified?.toString() || null,
       },
     };
-  } catch (error: any) {
-    throw new Error(error);
+  } catch (error) {
+    throw new Error(getErrorMessage(error));
   }
 }

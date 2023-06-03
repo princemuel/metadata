@@ -1,16 +1,11 @@
+import { getErrorMessage } from '@/lib';
 import { db } from '../api/auth/[...nextauth]/route';
 
-interface IParams {
-  userId?: string;
-  authorId?: string;
-  listingId?: string;
-}
-
-export default async function getReservations(params: IParams) {
+export async function getReservations(params: Params) {
   try {
     const { listingId, userId, authorId } = params;
 
-    const query: any = {};
+    const query: Record<string, string | {}> = {};
 
     if (listingId) query.listingId = listingId;
     if (userId) query.userId = userId;
@@ -26,7 +21,7 @@ export default async function getReservations(params: IParams) {
       },
     });
 
-    const safeReservations = reservations.map((reservation) => ({
+    const data = reservations.map((reservation) => ({
       ...reservation,
       createdAt: reservation.createdAt.toISOString(),
       startDate: reservation.startDate.toISOString(),
@@ -37,8 +32,8 @@ export default async function getReservations(params: IParams) {
       },
     }));
 
-    return safeReservations;
-  } catch (error: any) {
-    throw new Error(error);
+    return data;
+  } catch (error) {
+    throw new Error(getErrorMessage(error));
   }
 }
