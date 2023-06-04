@@ -2,7 +2,7 @@ export * from './calendar';
 export * from './category-box';
 export * from './category-input';
 export * from './counter';
-export * from './country-select';
+export * from './country-menu';
 export * from './empty-state';
 export * from './image-uploader';
 export * from './listing-card';
