@@ -40,7 +40,7 @@ const LoginForm = () => {
       if (response?.ok) {
         toast.success('Login Successfull');
         router.refresh();
-        loginModal.onClose();
+        loginModal.close();
       }
 
       if (response?.error) {
@@ -50,13 +50,16 @@ const LoginForm = () => {
   };
 
   const onToggle = useCallback(() => {
-    loginModal.onClose();
-    registerModal.onOpen();
+    loginModal.close();
+    registerModal.open();
   }, [loginModal, registerModal]);
 
   const body = (
     <div className='flex flex-col gap-4'>
-      <Heading title='Welcome back' subtitle='Login to your account!' />
+      <Heading
+        title='Welcome back'
+        subtitle='Login to your account!'
+      />
       <Input
         id='email'
         label='Email'
@@ -78,7 +81,7 @@ const LoginForm = () => {
   );
 
   const footer = (
-    <footer className='flex flex-col gap-4 mt-3'>
+    <footer className='mt-3 flex flex-col gap-4'>
       <hr />
       <Button
         outline
@@ -92,14 +95,14 @@ const LoginForm = () => {
         icon={AiFillGithub}
         onClick={() => signIn('github')}
       />
-      <div className='text-neutral-500 text-center mt-4 font-light'>
+      <div className='mt-4 text-center font-light text-neutral-500'>
         <p>
           <span>First time using Airbnb? </span>
           <span
             onClick={onToggle}
             className='
-              text-neutral-800
               cursor-pointer
+              text-neutral-800
               hover:underline
             '
           >
@@ -116,7 +119,7 @@ const LoginForm = () => {
       isOpen={loginModal.show}
       title='Login'
       actionLabel='Continue'
-      onClose={loginModal.onClose}
+      onClose={loginModal.close}
       onSubmit={handleSubmit(onSubmit)}
       body={body}
       footer={footer}
