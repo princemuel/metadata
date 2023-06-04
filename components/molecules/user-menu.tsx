@@ -26,9 +26,9 @@ function UserMenu({ currentUser }: Props) {
   }, []);
 
   const handleRentModal = React.useCallback(() => {
-    if (!currentUser) return loginModal.onOpen();
+    if (!currentUser) return loginModal.open();
 
-    rentModal.onOpen();
+    rentModal.open();
   }, [currentUser, loginModal, rentModal]);
 
   return (
@@ -75,14 +75,26 @@ function UserMenu({ currentUser }: Props) {
                   label='My properties'
                   onClick={() => router.push('/properties')}
                 />
-                <MenuItem label='Airbnb your home' onClick={rentModal.onOpen} />
+                <MenuItem
+                  label='Airbnb your home'
+                  onClick={rentModal.open}
+                />
                 <hr />
-                <MenuItem label='Logout' onClick={() => signOut()} />
+                <MenuItem
+                  label='Logout'
+                  onClick={() => signOut()}
+                />
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <MenuItem label='Login' onClick={loginModal.onOpen} />
-                <MenuItem label='Register' onClick={registerModal.onOpen} />
+                <MenuItem
+                  label='Login'
+                  onClick={loginModal.open}
+                />
+                <MenuItem
+                  label='Register'
+                  onClick={registerModal.open}
+                />
               </React.Fragment>
             )}
           </div>
