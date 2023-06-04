@@ -191,7 +191,7 @@ const SearchForm = () => {
 
   return (
     <Modal
-      isOpen={searchModal.isOpen}
+      isOpen={searchModal.show}
       title='Filters'
       actionLabel={actionLabel}
       onSubmit={handleSubmit}
