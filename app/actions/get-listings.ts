@@ -4,14 +4,14 @@ import { db } from '../api/auth/[...nextauth]/route';
 export async function getListings(params: Params) {
   try {
     const {
-      userId,
+      category,
+      bathrooms,
       rooms,
       guests,
-      bathrooms,
-      location,
       startDate,
       endDate,
-      category,
+      location,
+      userId,
     } = params;
 
     const query: Record<string, string | {}> = {};
@@ -26,19 +26,19 @@ export async function getListings(params: Params) {
 
     if (rooms) {
       query.rooms = {
-        gte: +rooms,
+        gte: Number(rooms),
       };
     }
 
     if (guests) {
       query.guests = {
-        gte: +guests,
+        gte: Number(guests),
       };
     }
 
     if (bathrooms) {
       query.bathrooms = {
-        gte: +bathrooms,
+        gte: Number(bathrooms),
       };
     }
 
