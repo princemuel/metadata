@@ -1,10 +1,10 @@
-import { AxiosResponse } from "axios";
-import { useRouter } from "next/navigation";
-import { useCallback, useMemo } from "react";
-import { toast } from "react-hot-toast";
-import { client } from "../clients";
-import { getErrorMessage } from "../helpers";
-import { useLoginModal } from "./use-modals";
+import { AxiosResponse } from 'axios';
+import { useRouter } from 'next/navigation';
+import { useCallback, useMemo } from 'react';
+import { toast } from 'react-hot-toast';
+import { client } from '../clients';
+import { getErrorMessage } from '../helpers';
+import { useLoginModal } from './use-modals';
 
 const useFavorite = (listing: string, user?: SafeUser | null) => {
   const router = useRouter();
@@ -18,7 +18,7 @@ const useFavorite = (listing: string, user?: SafeUser | null) => {
   const toggle = useCallback(
     async (e: ReactMouseEvent) => {
       e.stopPropagation();
-      if (!user) return loginModal.onOpen();
+      if (!user) return loginModal.open();
 
       try {
         let request: () => Promise<AxiosResponse<any, any>>;
@@ -29,7 +29,7 @@ const useFavorite = (listing: string, user?: SafeUser | null) => {
         }
         await request();
         router.refresh();
-        toast.success("Success");
+        toast.success('Success');
       } catch (error) {
         toast.error(getErrorMessage(error));
       }
