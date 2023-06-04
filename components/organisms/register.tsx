@@ -24,18 +24,19 @@ const RegisterForm = () => {
   });
 
   const handleToggle = useCallback(() => {
-    registerModal.onClose();
-    loginModal.onOpen();
+    registerModal.close();
+    loginModal.open();
   }, [registerModal, loginModal]);
 
   const onSubmit: SubmitHandler<AuthFormData> = (data) => {
     setIsLoading(true);
 
-    client.post('/register', data)
+    client
+      .post('/register', data)
       .then(() => {
-        toast.success('User Registeration Successfull!');
-        registerModal.onClose();
-        loginModal.onOpen();
+        toast.success('User registeration success');
+        registerModal.close();
+        loginModal.open();
       })
       .catch((error) => {
         toast.error(error);
@@ -47,7 +48,10 @@ const RegisterForm = () => {
 
   const body = (
     <div className='flex flex-col gap-4'>
-      <Heading title='Welcome to Airbnb' subtitle='Create an account!' />
+      <Heading
+        title='Welcome to Airbnb'
+        subtitle='Create an account!'
+      />
       <Input
         id='name'
         label='Name'
@@ -111,7 +115,7 @@ const RegisterForm = () => {
       isOpen={registerModal.show}
       title='Register'
       actionLabel='Continue'
-      onClose={registerModal.onClose}
+      onClose={registerModal.close}
       onSubmit={handleSubmit(onSubmit)}
       body={body}
       footer={footer}
