@@ -2,7 +2,10 @@ interface ErrorWithMessage {
   message: string;
 }
 interface ErrorDataWithMessage {
-  data: { message: string };
+  data: ErrorWithMessage;
+}
+interface ErrorResponseDataWithMessage {
+  response: { data: ErrorWithMessage };
 }
 
 export function getErrorMessage(error: unknown) {
@@ -12,6 +15,7 @@ export function getErrorMessage(error: unknown) {
 function toErrorWithMessage(error: unknown): ErrorWithMessage {
   if (isErrorWithMessage(error)) return error;
   if (isErrorWithData(error)) return error.data;
+  if (isErrorWithResponseData(error)) return error.response.data;
 
   try {
     return new Error(JSON.stringify(error));
@@ -27,18 +31,30 @@ function toErrorWithMessage(error: unknown): ErrorWithMessage {
  */
 function isErrorWithMessage(error: unknown): error is ErrorWithMessage {
   return (
-    typeof error === "object" &&
-    error !== null &&
-    "message" in error &&
-    typeof (error as Record<string, unknown>).message === "string"
+    valueIsObject(error) &&
+    'message' in error &&
+    typeof error.message === 'string'
   );
 }
 
 function isErrorWithData(error: unknown): error is ErrorDataWithMessage {
   return (
-    typeof error === "object" &&
-    error != null &&
-    "data" in error &&
-    typeof (error as any)?.data?.message === "string"
+    valueIsObject(error) &&
+    'data' in error &&
+    typeof (error as any)?.data?.message === 'string'
   );
+}
+function isErrorWithResponseData(
+  error: unknown
+): error is ErrorResponseDataWithMessage {
+  return (
+    valueIsObject(error) &&
+    'response' in error &&
+    typeof (error as any)?.response?.data?.message ===
+      'string'
+  );
+}
+
+function valueIsObject(value: unknown): value is object {
+  return value != null && typeof value === 'object';
 }
