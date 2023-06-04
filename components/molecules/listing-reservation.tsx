@@ -2,7 +2,7 @@
 
 import { Range } from 'react-date-range';
 import { Button } from '../atoms';
-import { DatePicker } from './calendar';
+import { DatePicker } from './datepicker';
 
 interface Props {
   price: number;
