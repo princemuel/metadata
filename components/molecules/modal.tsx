@@ -81,7 +81,10 @@ export const Modal = ({
                   <IoMdClose size={18} />
                 </button>
 
-                <h2 id='modal-heading' className='text-lg font-semibold'>
+                <h2
+                  id='modal-heading'
+                  className='text-lg font-semibold'
+                >
                   {title}
                 </h2>
               </header>
