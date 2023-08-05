@@ -22,7 +22,7 @@ import {
   Modal,
 } from '../molecules';
 
-enum STEPS {
+const enum STEPS {
   CATEGORY,
   LOCATION,
   INFO,

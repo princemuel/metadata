@@ -6,12 +6,10 @@ import { Container } from '../atoms';
 import { CategoryBox } from '../molecules';
 
 const Categories = () => {
-  const params = useSearchParams();
-  const category = params?.get('category');
-  const pathname = usePathname();
-  const isHomePage = pathname === '/';
+  const category = useSearchParams().get('category');
+  const isHome = usePathname() === '/';
 
-  if (!isHomePage) return null;
+  if (!isHome) return null;
 
   return (
     <Container>
