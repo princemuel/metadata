@@ -1,6 +1,6 @@
-import * as React from "react";
-import { ModalsProvider } from "./modals";
-import { ToastProvider } from "./toast";
+import * as React from 'react';
+import { ModalsProvider } from './modals';
+import { ToastProvider } from './toast';
 
 interface Props {}
 

@@ -1,4 +1,4 @@
-import all from "world-countries";
+import all from 'world-countries';
 
 const countries = all.map((country) => ({
   code: country.cca2,

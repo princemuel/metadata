@@ -50,8 +50,7 @@ function isErrorWithResponseData(
   return (
     valueIsObject(error) &&
     'response' in error &&
-    typeof (error as any)?.response?.data?.message ===
-      'string'
+    typeof (error as any)?.response?.data?.message === 'string'
   );
 }
 
