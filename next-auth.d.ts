@@ -15,6 +15,7 @@ declare module 'next-auth' {
       id: string;
       createdAt: string;
       updatedAt: string;
+      email: string | undefined;
       emailVerified: string | null;
       password: string | null;
     } & DefaultSession['user'];
