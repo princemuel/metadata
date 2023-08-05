@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useCountries } from "@/lib";
-import Image from "next/image";
-import { Heading, HeartButton } from "../atoms";
+import { useCountries } from '@/lib';
+import Image from 'next/image';
+import { Heading, HeartButton } from '../atoms';
 
 interface Props {
   id: string;
@@ -21,10 +21,18 @@ const ListingHead = ({ title, location, image, id, user }: Props) => {
         title={title}
         subtitle={`${country?.region}, ${country?.name}`}
       />
-      <figure className="relative h-[60vh] w-full overflow-hidden rounded-xl">
-        <Image src={image} fill className="w-full object-cover" alt="Image" />
-        <div className="absolute right-5 top-5">
-          <HeartButton listing={id} user={user} />
+      <figure className='relative h-[60vh] w-full overflow-hidden rounded-xl'>
+        <Image
+          src={image}
+          fill
+          className='w-full object-cover'
+          alt='Image'
+        />
+        <div className='absolute right-5 top-5'>
+          <HeartButton
+            listing={id}
+            user={user}
+          />
         </div>
       </figure>
     </>

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useCallback } from "react";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { useCallback } from 'react';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 interface Props {
   title: string;
@@ -21,27 +21,27 @@ const Counter = ({ title, subtitle, value, update }: Props) => {
   }, [update, value]);
 
   return (
-    <blockquote className="flex items-center justify-between">
-      <div className="flex flex-col">
-        <h3 className="font-medium">{title}</h3>
-        <p className="font-light text-gray-600">{subtitle}</p>
+    <blockquote className='flex items-center justify-between'>
+      <div className='flex flex-col'>
+        <h3 className='font-medium'>{title}</h3>
+        <p className='font-light text-gray-600'>{subtitle}</p>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className='flex items-center gap-4'>
         <button
-          type="button"
+          type='button'
           onClick={decrease}
-          className="flex aspect-square w-10 items-center justify-center rounded-full border border-neutral-400 text-neutral-600 transition hover:opacity-80"
+          className='flex aspect-square w-10 items-center justify-center rounded-full border border-neutral-400 text-neutral-600 transition hover:opacity-80'
         >
           <AiOutlineMinus />
         </button>
 
-        <p className="text-xl font-light text-neutral-600">{value}</p>
+        <p className='text-xl font-light text-neutral-600'>{value}</p>
 
         <button
-          type="button"
+          type='button'
           onClick={increase}
-          className="flex aspect-square w-10 items-center justify-center rounded-full border border-neutral-400 text-neutral-600 transition hover:opacity-80"
+          className='flex aspect-square w-10 items-center justify-center rounded-full border border-neutral-400 text-neutral-600 transition hover:opacity-80'
         >
           <AiOutlinePlus />
         </button>

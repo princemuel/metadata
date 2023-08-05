@@ -1,6 +1,5 @@
 import db from '@/app/api/db';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { compare } from 'bcrypt';
 import createHttpError from 'http-errors';
 import {
   Session,
@@ -8,7 +7,6 @@ import {
   type NextAuthOptions,
   type TokenSet,
 } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 
@@ -41,39 +39,6 @@ export const options: NextAuthOptions = {
       },
     }),
 
-    // deprecate this provider later
-    CredentialsProvider({
-      name: 'credentials',
-      credentials: {
-        email: { label: 'email', type: 'text' },
-        password: { label: 'password', type: 'password' },
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password)
-          throw new TypeError(
-            'Invalid Credentials: Email and password are required'
-          );
-
-        const user = await db.user.findUnique({
-          where: {
-            email: credentials.email.toLowerCase(),
-          },
-        });
-        if (!user || !user?.password)
-          throw new ReferenceError(
-            'Invalid Credentials: This user does not exist'
-          );
-
-        const matches = await compare(credentials.password, user.password);
-        if (!matches) {
-          throw new TypeError(
-            'Invalid Credentials: Please enter a valid password'
-          );
-        }
-
-        return user;
-      },
-    }),
     /**
      * ...add more providers here.
      *
