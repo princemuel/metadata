@@ -1,15 +1,9 @@
-import { getServerSession } from 'next-auth/next';
-import { authOptions, db } from '../api/auth/[...nextauth]/route';
+import { getAuthSession } from '../api/auth/[...nextauth]/options';
+import db from '../api/db';
 
-export async function getSession() {
-  return await getServerSession(authOptions);
-}
-
-export async function getCurrentUser() {
+export async function fetchUser() {
   try {
-    const session = await getSession();
-    if (!session?.user?.email) return null;
-
+    const session = await getAuthSession();
     const user = await db.user.findUnique({
       where: {
         email: session.user.email,

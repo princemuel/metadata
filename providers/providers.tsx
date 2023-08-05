@@ -2,14 +2,17 @@ import * as React from 'react';
 import { ModalsProvider } from './modals';
 import { ToastProvider } from './toast';
 
-interface Props {}
+interface Props {
+  children: React.ReactNode;
+}
 
-const Providers = (props: Props) => {
+const Providers = ({ children }: Props) => {
   return (
-    <React.Fragment>
+    <>
       <ToastProvider />
       <ModalsProvider />
-    </React.Fragment>
+      {children}
+    </>
   );
 };
 

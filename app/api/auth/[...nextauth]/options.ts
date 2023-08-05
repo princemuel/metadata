@@ -109,17 +109,17 @@ export const options: NextAuthOptions = {
 /**
  * An overloaded function wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
  * You have the option of using it as is, vit automatic validation
- * or passing the  **No-Validate** param to enable handling the validation
+ * or passing the  **no-validate** param to enable handling the validation
  * yourself
  * @see https://next-auth.js.org/configuration/nextjs
  */
 export async function getAuthSession(
-  param: 'No-Validate'
+  param: 'no-validate'
 ): Promise<Session | null>;
 export async function getAuthSession(): Promise<Session>;
 export async function getAuthSession(param?: unknown): Promise<unknown> {
   const session = await getServerSession(options);
-  if (param && param === 'No-Validate') return session;
+  if (param && param === 'no-validate') return session;
   if (!session)
     throw createHttpError.Unauthorized(
       'Invalid user session. Please login again'
