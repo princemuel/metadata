@@ -1,6 +1,6 @@
 'use client';
 
-import { cx } from 'cva';
+import { cn } from '@/lib';
 import Leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect } from 'react';
@@ -28,7 +28,7 @@ const Map = ({ children, className, ...rest }: Props) => {
 
   return (
     <MapContainer
-      className={cx('h-[35vh] rounded-lg', className)}
+      className={cn('h-[35vh] rounded-lg', className)}
       {...rest}
     >
       {children?.(ReactLeaflet, Leaflet)}

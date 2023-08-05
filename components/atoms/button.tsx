@@ -1,4 +1,4 @@
-import { cx } from 'cva';
+import { cn } from '@/lib';
 import type { IconType } from 'react-icons';
 
 interface Props
@@ -21,7 +21,7 @@ const Button = ({
 }: Props) => {
   return (
     <button
-      className={cx(
+      className={cn(
         'relative w-full rounded-lg transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70',
         outline ? 'bg-white' : 'bg-rose-500',
         outline ? 'border-black' : 'border-rose-500',
@@ -34,7 +34,12 @@ const Button = ({
       onClick={onClick}
       {...props}
     >
-      {Icon && <Icon size={24} className='absolute left-4 top-3' />}
+      {Icon && (
+        <Icon
+          size={24}
+          className='absolute left-4 top-3'
+        />
+      )}
       {label}
     </button>
   );

@@ -22,7 +22,7 @@ import {
   Modal,
 } from '../molecules';
 
-enum STEPS {
+const enum STEPS {
   CATEGORY,
   LOCATION,
   INFO,
@@ -46,11 +46,13 @@ const RentalForm = () => {
     setStep((value) => value + 1);
   };
 
+  // current action label
   const actionLabel = React.useMemo(() => {
     if (step === STEPS.PRICE) return 'Create';
     return 'Next';
   }, [step]);
 
+  // next action label
   const secondaryActionLabel = React.useMemo(() => {
     if (step === STEPS.CATEGORY) return undefined;
     return 'Back';

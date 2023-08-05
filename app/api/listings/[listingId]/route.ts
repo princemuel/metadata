@@ -1,20 +1,20 @@
-import { getCurrentUser } from '@/app/actions';
+import db from '@/app/api/db';
+import createHttpError from 'http-errors';
 import { NextResponse } from 'next/server';
-import { db } from '../../auth/[...nextauth]/route';
+import { getAuthSession } from '../../auth/[...nextauth]/options';
 
 export async function DELETE(request: Request, { params }: { params: Params }) {
-  const user = await getCurrentUser();
-  if (!user) return NextResponse.error();
+  const session = await getAuthSession();
 
   const { listingId } = params;
   if (!listingId || typeof listingId !== 'string') {
-    throw new TypeError('This listing id is not valid');
+    throw new createHttpError.BadRequest('This listing id is not valid');
   }
 
   const listing = await db.listing.deleteMany({
     where: {
       id: listingId,
-      userId: user.id,
+      userId: session.user.id,
     },
   });
 

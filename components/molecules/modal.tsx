@@ -1,6 +1,6 @@
 'use client';
 
-import { cx } from 'cva';
+import { cn } from '@/lib';
 import * as React from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { Button } from '../atoms';
@@ -64,7 +64,7 @@ export const Modal = ({
           {/* MODAL CONTENT */}
           <section
             aria-labelledby='modal-heading'
-            className={cx(
+            className={cn(
               'h-full transition duration-300',
               showModal ? 'translate-y-0' : 'translate-y-full',
               showModal ? 'opacity-100' : 'opacity-0'
