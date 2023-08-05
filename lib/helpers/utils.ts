@@ -1,3 +1,13 @@
+import { cx } from 'cva';
+import type { ClassValue } from 'cva/dist/types';
+import { extendTailwindMerge } from 'tailwind-merge';
+
+const customTwMerge = extendTailwindMerge({});
+
+export function cn(...args: ClassValue[]) {
+  return customTwMerge(cx(args));
+}
+
 /*---------------------------------*
             STRING UTILS           *
   ---------------------------------*

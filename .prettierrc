@@ -15,6 +15,6 @@
   "jsxSingleQuote": true,
   "useTabs": false,
   "tailwindConfig": "tailwind.config.js",
-  "tailwindFunctions": ["cx"],
+  "tailwindFunctions": ["cn"],
   "plugins": ["prettier-plugin-prisma", "prettier-plugin-tailwindcss"]
 }

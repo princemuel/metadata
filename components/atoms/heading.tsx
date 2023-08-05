@@ -1,4 +1,4 @@
-import { cx } from 'cva';
+import { cn } from '@/lib';
 
 interface Props {
   title: string;
@@ -9,7 +9,7 @@ interface Props {
 
 const Heading = ({ title, subtitle, center, className }: Props) => {
   return (
-    <div className={cx(className, center ? 'text-center' : 'text-start')}>
+    <div className={cn(className, center ? 'text-center' : 'text-start')}>
       <h2 className='text-2xl font-bold'>{title}</h2>
       <p className='mt-2 font-light text-neutral-500'>{subtitle}</p>
     </div>
