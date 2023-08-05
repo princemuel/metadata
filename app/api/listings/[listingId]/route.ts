@@ -1,6 +1,6 @@
 import { getCurrentUser } from '@/app/actions';
+import db from '@/app/api/db';
 import { NextResponse } from 'next/server';
-import { db } from '../../auth/[...nextauth]/route';
 
 export async function DELETE(request: Request, { params }: { params: Params }) {
   const user = await getCurrentUser();

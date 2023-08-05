@@ -1,7 +1,7 @@
 import { getCurrentUser } from '@/app/actions';
+import db from '@/app/api/db';
 import { objectKeys } from '@/lib';
 import { NextResponse } from 'next/server';
-import { db } from '../auth/[...nextauth]/route';
 
 export async function POST(request: Request) {
   const user = await getCurrentUser();
