@@ -1,8 +1,8 @@
-import { ClientOnly, Navbar } from '@/components';
-import { Providers } from '@/lib/providers';
+import { SessionProvider } from '@/providers';
+import { Providers } from '@/providers/providers';
 import { Metadata } from 'next';
 import * as React from 'react';
-import { getCurrentUser } from './actions/get-current-user';
+import { getAuthSession } from './api/auth/[...nextauth]/options';
 import { font } from './fonts';
 import './globals.css';
 
@@ -13,25 +13,24 @@ export const metadata: Metadata = {
   description: 'Airbnb Clone',
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getCurrentUser();
+  const session = getAuthSession().then((response) => response);
   return (
     <html
       lang='en'
       className={font}
     >
       <body>
-        <React.Fragment>
-          <ClientOnly>
-            <Providers />
-          </ClientOnly>
-          <Navbar currentUser={user} />
-          <main className='pb-20 pt-28'>{children}</main>
-        </React.Fragment>
+        <SessionProvider session={session}>
+          <Providers>
+            {/* <Navbar currentUser={user} /> */}
+            <main className='pb-20 pt-28'>{children}</main>
+          </Providers>
+        </SessionProvider>
       </body>
     </html>
   );
