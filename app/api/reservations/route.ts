@@ -1,31 +1,35 @@
-import { getCurrentUser } from '@/app/actions';
 import db from '@/app/api/db';
+import { objectKeys } from '@/lib';
+import createHttpError from 'http-errors';
 import { NextResponse } from 'next/server';
+import { getAuthSession } from '../auth/[...nextauth]/options';
 
 export async function POST(request: Request) {
-  const user = await getCurrentUser();
-  if (!user) return NextResponse.error();
+  const session = await getAuthSession();
 
-  const body = (await request.json()) as IReservation;
-  const { listingId, startDate, endDate, total } = body;
+  const body = await request.json();
 
-  if (!listingId || !startDate || !endDate || !total) {
-    return NextResponse.error();
+  for (const value of objectKeys(body)) {
+    if (body[value] == undefined) {
+      throw new createHttpError.BadRequest(
+        `Malformed data received. Got ${body[value]}`
+      );
+    }
   }
 
   const data = await db.listing.update({
-    where: {
-      id: listingId,
-    },
     data: {
       reservations: {
         create: {
-          userId: user.id,
-          startDate,
-          endDate,
-          total,
+          start: body.start,
+          end: body.end,
+          total: body.total,
+          userId: session.user.id,
         },
       },
+    },
+    where: {
+      id: body.listingId,
     },
   });
 
