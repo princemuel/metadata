@@ -35,7 +35,7 @@
     "immer": "^10.0.2",
     "leaflet": "^1.9.4",
     "next": "13.4.12",
-    "next-auth": "4.22.3",
+    "next-auth": "4.24.5",
     "next-cloudinary": "^4.17.1",
     "next-superjson-plugin": "^0.5.9",
     "postcss": "8.4.27",
