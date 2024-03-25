@@ -61,7 +61,7 @@
     "astro-eslint-parser": "^0.16.2",
     "css-has-pseudo": "^6.0.1",
     "eslint": "^8.56.0",
-    "eslint-plugin-astro": "^0.31.3",
+    "eslint-plugin-astro": "^0.33.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "husky": "^9.0.5",
