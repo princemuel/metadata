@@ -91,7 +91,7 @@
     "lint-staged": "^15.2.2",
     "marked": "^12.0.2",
     "mdast-util-to-string": "^4.0.0",
-    "oxlint": "^0.3.2",
+    "oxlint": "^0.4.1",
     "postcss-import": "^16.1.0",
     "postcss-preset-env": "^9.5.11",
     "prettier": "^3.2.5",
