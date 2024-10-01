@@ -54,7 +54,7 @@
     "@biomejs/biome": "^1.8.3",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@expressive-code/plugin-collapsible-sections": "^0.36.1",
+    "@expressive-code/plugin-collapsible-sections": "^0.37.0",
     "@expressive-code/plugin-line-numbers": "^0.36.1",
     "@iconify-json/fa": "^1.2.0",
     "@iconify-json/logos": "^1.2.0",
