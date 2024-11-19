@@ -9,25 +9,5 @@
   "bracketSameLine": false,
   "trailingComma": "all",
   "arrowParens": "always",
-  "quoteProps": "as-needed",
-  "experimentalTernaries": false,
-
-  "tailwindConfig": "tailwind.config.js",
-  "tailwindFunctions": ["tw", "cn", "tv"],
-  "tailwindAttributes": ["tw"],
-  "plugins": [
-    "prettier-plugin-prisma",
-    "prettier-plugin-astro",
-    "prettier-plugin-tailwindcss"
-  ],
-  "overrides": [
-    {
-      "files": "*.astro",
-      "options": {
-        "parser": "astro",
-        "astroAllowShorthand": false,
-        "astroSkipFrontmatter": true
-      }
-    }
-  ]
+  "quoteProps": "as-needed"
 }
