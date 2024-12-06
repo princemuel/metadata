@@ -1,0 +1,64 @@
+{
+  "dotenv.enableAutocloaking": false,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.inlineSuggest.enabled": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 88,
+  "emmet.preferences": {
+    "output.selfClosingStyle": "xhtml"
+  },
+  "eslint.enable": false,
+  "json.validate.enable": true,
+  "markdown.extension.syntax.plainTheme": true,
+  "material-icon-theme.activeIconPack": "react_redux",
+  "material-icon-theme.folders.theme": "specific",
+
+  "window.autoDetectColorScheme": true,
+  "workbench.tree.indent": 8,
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "material-icon-theme.files.associations": {
+    "**.mdoc": "mdx"
+    // "**.mdoc": "markdown"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdoc]": {
+    "editor.defaultFormatter": "stripe.markdoc-language-support"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "mdx.server.enable": true,
+  "mdx.validate.validateDuplicateLinkDefinitions": "warning",
+  "mdx.validate.validateFileLinks": "warning",
+  "mdx.validate.validateFragmentLinks": "warning",
+  "mdx.validate.validateMarkdownFileLinkFragments": "warning",
+  "mdx.validate.validateReferences": "warning",
+  "mdx.validate.validateUnusedLinkDefinitions": "warning"
+}
