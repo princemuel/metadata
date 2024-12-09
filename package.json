@@ -1,0 +1,28 @@
+{
+  "name": "princemuel",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "My personal website built with Astro, Qwik, Tailwind CSS, MDX, and the Github API",
+  "private": true,
+  "repository": "git@github.com:princemuel/metadata.git",
+  "author": "princemuel <vansomecsam@gmail.com>",
+  "scripts": {
+    "fmt": "prettier --write '**/*.{md,mdx}'",
+    "lint": "eslint '**/*.{md,mdx}'",
+    "rmk": "remark . --use preset-lint-consistent preset-lint-markdown-style-guide preset-lint-recommended preset-prettier"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
+  "devDependencies": {
+    "eslint": "^9.16.0",
+    "eslint-plugin-mdx": "^3.1.5",
+    "prettier": "^3.4.2",
+    "remark-cli": "^12.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-preset-lint-consistent": "^6.0.0",
+    "remark-preset-lint-markdown-style-guide": "^6.0.0",
+    "remark-preset-lint-recommended": "^7.0.0",
+    "remark-preset-prettier": "^2.0.1"
+  }
+}
