@@ -1,5 +1,5 @@
 ---
-title: "Sunday-Going to Worship"
+title: Sunday Going to Worship
 ---
 
 ## An unholy worshipper

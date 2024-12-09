@@ -1,11 +1,16 @@
 ---
-title: "Markdown Style Guide"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
-pubDate: "Jul 01 2022"
-heroImage: "/blog-placeholder.jpg"
-categories: ["life"]
-authors: ["gndx"]
-tags: ["science", "space"]
+title: Markdown Style Guide
+description: "Here is a sample of some basic Markdown syntax that can be
+used when writing Markdown content in Astro."
+pubDate: Jul 01 2022
+heroImage: blog-placeholder.jpg
+categories:
+  - life
+authors:
+  - gndx
+tags:
+  - science
+  - space
 ---
 
 ## An unholy worshipper
@@ -17,8 +22,6 @@ Here is a sample of some basic Markdown syntax that can be used when writing Mar
 ## Headings
 
 The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
-
-# H1
 
 ## H2
 
@@ -72,15 +75,15 @@ The blockquote element represents content that is quoted from another source, op
 
 ```markdown
 > Don't communicate by sharing memory, share memory by communicating.<br>
-> — <cite>Rob Pike[^1]</cite>
+> — <cite>Rob Pike\[^1]</cite>
 ```
 
 #### Output
 
 > Don't communicate by sharing memory, share memory by communicating.<br>
-> — <cite>Rob Pike[^1]</cite>
+> — <cite>Rob Pike\[^1]</cite>
 
-[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
+\[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
 ## Tables
 
@@ -102,7 +105,7 @@ The blockquote element represents content that is quoted from another source, op
 
 #### Syntax
 
-we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntac, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
+we can use 3 backticks \`\`\` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntac, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
 
 ````markdown
 ```html
