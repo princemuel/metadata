@@ -1,0 +1,55 @@
+{
+  "$ref": "#/definitions/authors",
+  "definitions": {
+    "authors": {
+      "type": "object",
+      "properties": {
+        "alternate": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "avatar": {
+              "type": "string"
+            },
+            "social": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "format": "uri"
+              },
+              "propertyNames": {
+                "minLength": 1
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "links"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

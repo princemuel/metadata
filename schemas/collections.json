@@ -1,0 +1,56 @@
+{
+  "collections": [
+    {
+      "hasSchema": true,
+      "name": "authors"
+    },
+    {
+      "hasSchema": true,
+      "name": "categories"
+    },
+    {
+      "hasSchema": true,
+      "name": "changelog"
+    },
+    {
+      "hasSchema": true,
+      "name": "journal"
+    },
+    {
+      "hasSchema": true,
+      "name": "posts"
+    },
+    {
+      "hasSchema": true,
+      "name": "projects"
+    },
+    {
+      "hasSchema": true,
+      "name": "publications"
+    },
+    {
+      "hasSchema": true,
+      "name": "routes"
+    },
+    {
+      "hasSchema": true,
+      "name": "socials"
+    },
+    {
+      "hasSchema": true,
+      "name": "tests"
+    }
+  ],
+  "entries": {
+    "file:///home/io/workspace/repos/princemuel.com/app/content/resources/authors.json": "authors",
+    "file:///home/io/workspace/repos/princemuel.com/app/content/resources/categories.json": "categories",
+    "file:///home/io/workspace/repos/princemuel.com/app/content/changelog/v0.3.0.md": "changelog",
+    "file:///home/io/workspace/repos/princemuel.com/app/content/journal/2024/11/19-move-bitch-get-out-the-way.md": "journal",
+    "file:///home/io/workspace/repos/princemuel.com/app/content/posts/tailwind-typography/index.md": "posts",
+    "file:///home/io/workspace/repos/princemuel.com/app/content/projects/audiophile/index.mdx": "projects",
+    "file:///home/io/workspace/repos/princemuel.com/app/content/projects/unocalc/index.mdx": "projects",
+    "file:///home/io/workspace/repos/princemuel.com/app/content/resources/publications.json": "publications",
+    "file:///home/io/workspace/repos/princemuel.com/app/content/resources/routes.json": "routes",
+    "file:///home/io/workspace/repos/princemuel.com/app/content/resources/socials.json": "socials"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$ref": "#/definitions/journal",
+  "definitions": {
+    "journal": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 2
+        },
+        "description": {
+          "type": "string",
+          "minLength": 2
+        },
+        "draft": {
+          "type": "boolean",
+          "default": true
+        },
+        "publishedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "updatedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "duration": {
+          "type": "string",
+          "default": "1 min read"
+        },
+        "words": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535,
+          "default": 200
+        },
+        "language": {
+          "type": "string",
+          "enum": [
+            "en",
+            "es",
+            "fr"
+          ],
+          "default": "en"
+        },
+        "permalink": {
+          "type": "string",
+          "format": "uri"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "publishedAt"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
