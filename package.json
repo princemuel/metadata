@@ -9,7 +9,7 @@
   "scripts": {
     "fmt": "prettier --write '**/*.{md,mdx}'",
     "lint": "eslint '**/*.{md,mdx}'",
-    "rmk": "remark . --use preset-lint-consistent preset-lint-markdown-style-guide preset-lint-recommended preset-prettier"
+    "rmk": "remark ."
   },
   "keywords": [],
   "license": "ISC",
@@ -20,6 +20,7 @@
     "prettier": "^3.4.2",
     "remark-cli": "^12.0.1",
     "remark-frontmatter": "^5.0.0",
+    "remark-lint-frontmatter-schema": "^3.15.4",
     "remark-preset-lint-consistent": "^6.0.0",
     "remark-preset-lint-markdown-style-guide": "^6.0.0",
     "remark-preset-lint-recommended": "^7.0.0",
