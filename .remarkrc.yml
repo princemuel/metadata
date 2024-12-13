@@ -3,6 +3,16 @@ settings:
   listItemIndent: "one"
 plugins:
   - remark-frontmatter
+  - - remark-lint-frontmatter-schema
+    - schemas:
+        schemas/journal.schema.json:
+          - journal/*.{md,mdx}
+        schemas/posts.schema.json:
+          - posts/*.{md,mdx}
+        schemas/articles.schema.json:
+          - articles/*.{md,mdx}
+        schemas/projects.schema.json:
+          - projects/*.{md,mdx}
   - remark-preset-lint-consistent
   - remark-preset-lint-markdown-style-guide
   - remark-preset-lint-recommended
